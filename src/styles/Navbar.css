@@ -1,0 +1,45 @@
+.navbar-container {
+  height: 80px;
+  width: 98%;
+  margin: 0px 1%;
+  margin-bottom: 40px;
+  background-color: #ededed;
+  border-radius: 20px;
+  display: flex;
+}
+
+.navbar-logo-container {
+  width: 73%;
+  height: 100%;
+  padding-left: 10px;
+}
+
+#navbar-logo {
+  height: 100%;
+}
+
+.navbar-link-container {
+  height: 100%;
+  width: 22%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.alumnos-link-container {
+  font-size: 20px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  color: #3a557c;
+  height: 100%;
+}
+
+.link-icon {
+  font-size: 35px;
+  margin-right: 5px;
+}
+
+a.active {
+  color: #91a8c7;
+}
