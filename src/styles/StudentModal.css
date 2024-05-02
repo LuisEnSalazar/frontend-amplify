@@ -1,0 +1,41 @@
+.modal-container {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  width: 40%;
+}
+
+.modal-header {
+  display: flex;
+  width: 100%;
+}
+
+.header-left {
+  width: 50%;
+}
+
+.header-right {
+  width: 50%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.modal-body {
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #333;
+}
+
+.modal-text-input {
+  width: 100%;
+  height: 30px;
+}
+
+.modal-select {
+  width: 40%;
+  height: 30px;
+}

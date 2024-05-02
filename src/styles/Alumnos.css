@@ -11,14 +11,15 @@
 
 #alumnos-add {
   background-color: #8fc027;
+  color: white;
   border-radius: 15px;
-  border: none;
   font-size: 20px;
   padding: 20px 50px;
   display: flex;
   align-items: center;
   cursor: pointer;
   margin-bottom: 40px;
+  width: 260px;
 }
 
 .add-icon {
