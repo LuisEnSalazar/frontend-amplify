@@ -1,3 +1,13 @@
 .table-container {
   margin: 0 40px;
 }
+
+.table {
+  height: 500px;
+  font-size: larger;
+}
+
+thead tr {
+  background-color: #3a557c;
+  color: white;
+}

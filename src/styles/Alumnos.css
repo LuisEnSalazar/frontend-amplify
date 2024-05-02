@@ -24,3 +24,8 @@
 .add-icon {
   margin-left: 5px;
 }
+
+.student-container {
+  display: flex;
+  justify-content: space-between;
+}

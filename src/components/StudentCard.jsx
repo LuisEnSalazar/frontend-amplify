@@ -2,16 +2,17 @@ import { useState } from "react";
 import "../styles/StudentCard.css";
 import { useNavigate } from "react-router-dom";
 import { Popover } from "react-tiny-popover";
+import axios from "axios";
 
-const StudentCard = ({ id }) => {
+const StudentCard = ({ student }) => {
   const navigate = useNavigate();
 
   const [isPopoverOpen, setIsPopoverOpen] = useState(false);
 
   const [formData, setFormData] = useState({
-    student_name: "",
-    num_list: "",
-    gender: "",
+    student_name: student.name,
+    num_list: student.num_list,
+    gender: student.gender,
   });
 
   const handleInputChange = (event) => {
@@ -24,13 +25,11 @@ const StudentCard = ({ id }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // You can perform additional actions here before submitting the form
-    // For example, sending data to the server or validating the form
     console.log("Form submitted:", formData);
   };
 
   const handleSee = () => {
-    navigate(`/alumno/${id}`);
+    navigate(`/alumno/${student.id}`);
   };
 
   const handleDelete = () => {};
@@ -64,7 +63,9 @@ const StudentCard = ({ id }) => {
           }
         >
           <div onClick={() => setIsPopoverOpen(!isPopoverOpen)}>
-            <span class="material-symbols-outlined">more_vert</span>
+            <span class="material-symbols-outlined options-menu">
+              more_vert
+            </span>
           </div>
         </Popover>
       </div>

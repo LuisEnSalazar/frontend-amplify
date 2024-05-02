@@ -21,7 +21,7 @@ const Table = ({ tableHead, tableRows }) => {
   return (
     <div className="table-container">
       <table class="table">
-        <thead class="thead-dark">
+        <thead>
           <tr>{renderTableHead()}</tr>
         </thead>
         <tbody>{renderTableRows()}</tbody>

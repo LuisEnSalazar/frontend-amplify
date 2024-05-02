@@ -6,7 +6,6 @@ import { useEffect, useState } from "react";
 
 const Alumnos = () => {
   const [students, setStudents] = useState([]);
-  const id = "123";
 
   const [formData, setFormData] = useState({
     student_name: "",
@@ -43,22 +42,17 @@ const Alumnos = () => {
     fetchStudents();
   };
 
-  /*
-  for (let i = 0; i < bots.length; i += 3) {
-    const botsInRow = bots.slice(i, i + 3);
+  for (let i = 0; i < students.length; i += 3) {
+    const studentsInRow = students.slice(i, i + 3);
     const hStack = (
-      <Flex marginTop="20px" w="100%">
-        {botsInRow.map((bot, index) => (
-          <>
-            <Etiqueta nombre={bot.name} status="Active" mostrarTexto={true} />
-            {index === 2 ? <></> : <Spacer />}
-          </>
+      <div className="student-container">
+        {studentsInRow.map((student) => (
+          <StudentCard student={student} />
         ))}
-        {botsInRow.length === 2 && <Box w="323px" />}
-      </Flex>
+      </div>
     );
-    hStacks.push(hStack);
-  }*/
+    studentStack.push(hStack);
+  }
 
   useEffect(() => {
     fetchStudents();
@@ -78,9 +72,7 @@ const Alumnos = () => {
           Añadir alumno
           <span class="material-symbols-outlined add-icon">add</span>
         </button>
-        <div className="alumnos-list">
-          <StudentCard id={id} />
-        </div>
+        <div className="alumnos-list">{studentStack}</div>
       </div>
       <div
         class="modal fade"
