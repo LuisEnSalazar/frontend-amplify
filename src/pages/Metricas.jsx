@@ -19,10 +19,18 @@ const Metricas = () => {
     ["4", "Luis Enrique Salazar", "800pts", "10", "35min"],
     ["5", "Luis Enrique Salazar", "800pts", "10", "35min"],
   ];
+
+  const testGeneral = "65%";
+  const testMale = "30%";
+  const testFemale = "35%";
+
   const [showing, setShowing] = useState("");
   const [metricaTitle, setMetricaTitle] = useState("");
   const [tableHead, setTableHead] = useState([]);
   const [tableRows, setTableRows] = useState([]);
+  const [generalPercentage, setGeneralPercentage] = useState("");
+  const [malePercentage, setMalePercentage] = useState("");
+  const [femalePercentage, setFemalePercentage] = useState("");
 
   const getTableData = (graph) => {
     axios
@@ -57,6 +65,20 @@ const Metricas = () => {
       getTableData("progreso");
     } else if (metricaOptionValue === "Puntajes Por Nivel") {
       getTableData("puntajesPorNivel");
+    } else if (metricaOptionValue === "Progreso Global Promedio") {
+      /*axios
+        .get("http://localhost.3000/progresoGlobalPromedio")
+        .then((res) => {
+          setGeneralPercentage(`${res.data.general}%`);
+          setMalePercentage(`${res.data.male}%`);
+          setFemalePercentage(`${res.data.female}%`);
+        })
+        .catch((err) => {
+          console.error(err);
+        });*/
+      setGeneralPercentage(testGeneral);
+      setMalePercentage(testMale);
+      setFemalePercentage(testFemale);
     }
   };
 
@@ -95,7 +117,28 @@ const Metricas = () => {
       <div className="metrica-title-container">
         <h1>{metricaTitle}</h1>
       </div>
-      {showing === "Progreso Global Promedio" ? null : (
+      {showing === "Progreso Global Promedio" ? (
+        <div className="percentage-container">
+          <div className="general-percentage-container">
+            <div className="general-text-container">
+              <p className="general-percentage">{generalPercentage}</p>
+              <p className="general-description">General</p>
+            </div>
+          </div>
+          <div className="male-female-percentage-container">
+            <div>
+              <div className="male-text-container">
+                <p className="male-female-percentage">{malePercentage}</p>
+                <p className="male-female-description">Hombres</p>
+              </div>
+              <div className="female-text-container">
+                <p className="male-female-percentage">{femalePercentage}</p>
+                <p className="male-female-description">Mujeres</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      ) : (
         <Tables tableHead={tableHead} tableRows={tableRows} />
       )}
     </div>

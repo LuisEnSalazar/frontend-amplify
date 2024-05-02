@@ -7,7 +7,7 @@
 .select-container {
   display: flex;
   justify-content: flex-end;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
 }
 
 #metrica-option {
@@ -19,4 +19,65 @@
   justify-content: center;
   align-items: center;
   margin-bottom: 10px;
+}
+
+.percentage-container {
+  width: 100%;
+  display: flex;
+}
+
+.general-percentage-container {
+  width: 65%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.general-text-container {
+  text-align: center;
+  color: #818181;
+}
+
+.general-percentage,
+.general-description {
+  display: block;
+  margin: 0;
+}
+
+.general-percentage {
+  font-size: 150px;
+  font-weight: bold;
+}
+
+.general-description {
+  font-size: 70px;
+}
+
+.male-female-percentage-container {
+  width: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.male-text-container,
+.female-text-container {
+  text-align: center;
+}
+
+.male-text-container {
+  color: #3a557c;
+}
+
+.female-text-container {
+  color: #8fc027;
+}
+
+.male-female-percentage {
+  font-size: 120px;
+  font-weight: bold;
+}
+
+.male-female-description {
+  font-size: 40px;
 }

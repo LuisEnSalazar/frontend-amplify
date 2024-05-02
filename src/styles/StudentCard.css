@@ -3,7 +3,6 @@
   width: 400px;
   border-radius: 15px;
   border: none;
-  margin-left: 1%;
   margin-bottom: 40px;
 }
 
@@ -20,8 +19,7 @@
 .popover-menu {
   background-color: white;
   padding: 10px;
-  border-style: solid;
-  border-width: 2px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 
 .popover-option {
