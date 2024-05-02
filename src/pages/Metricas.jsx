@@ -5,21 +5,6 @@ import Tables from "../components/Tables";
 import axios from "axios";
 
 const Metricas = () => {
-  const testTableHead = [
-    "#",
-    "Nombre",
-    "Puntaje Total",
-    "Intentos",
-    "Tiempo Jugado",
-  ];
-  const testTableRows = [
-    ["1", "Luis Enrique Salazar", "800pts", "10", "35min"],
-    ["2", "Luis Enrique Salazar", "800pts", "10", "35min"],
-    ["3", "Luis Enrique Salazar", "800pts", "10", "35min"],
-    ["4", "Luis Enrique Salazar", "800pts", "10", "35min"],
-    ["5", "Luis Enrique Salazar", "800pts", "10", "35min"],
-  ];
-
   const testGeneral = "65%";
   const testMale = "30%";
   const testFemale = "35%";
@@ -34,7 +19,7 @@ const Metricas = () => {
 
   const getTableData = (graph) => {
     axios
-      .get(`http://localhost.3000/${graph}`)
+      .get(`http://18.190.68.50:8000/metric/${graph}`)
       .then((res) => {
         setTableHead(res.data.tableHead);
         setTableRows(res.data.tableRows);
@@ -84,9 +69,7 @@ const Metricas = () => {
 
   useEffect(() => {
     setMetricaTitle("Mayores Puntajes");
-    //getTableData("mayoresPuntajes");
-    setTableHead(testTableHead);
-    setTableRows(testTableRows);
+    getTableData("mayoresPuntajes");
   }, []);
 
   return (

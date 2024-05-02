@@ -1,0 +1,41 @@
+.level-card-container {
+  padding: 0 30px;
+  border-radius: 15px;
+  height: 180px;
+  padding-top: 30px;
+}
+
+.level-top-info-container {
+  display: flex;
+  width: 100%;
+  padding: 0;
+  font-size: large;
+}
+
+.level-name {
+  width: 50%;
+  font-size: larger;
+  font-weight: bold;
+}
+
+.level-created-at {
+  width: 50%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.level-bottom-info-container {
+  height: 60%;
+  display: flex;
+  font-size: large;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.max-score {
+  font-weight: bold;
+}
+
+.level-status {
+  font-weight: bold;
+}
