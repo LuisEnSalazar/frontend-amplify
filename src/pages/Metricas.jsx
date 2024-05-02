@@ -51,7 +51,7 @@ const Metricas = () => {
     } else if (metricaOptionValue === "Puntajes Por Nivel") {
       getTableData("puntajesPorNivel");
     } else if (metricaOptionValue === "Progreso Global Promedio") {
-      /*axios
+      axios
         .get("http://localhost.3000/progresoGlobalPromedio")
         .then((res) => {
           setGeneralPercentage(`${res.data.general}%`);
@@ -60,10 +60,7 @@ const Metricas = () => {
         })
         .catch((err) => {
           console.error(err);
-        });*/
-      setGeneralPercentage(testGeneral);
-      setMalePercentage(testMale);
-      setFemalePercentage(testFemale);
+        });
     }
   };
 

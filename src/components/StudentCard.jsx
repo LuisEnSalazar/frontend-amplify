@@ -14,6 +14,7 @@ const StudentCard = ({ student }) => {
     name: student.name,
     list_num: student.list_num,
     gender: student.gender,
+    teacher_id: "LCzCXb8hjAJg89foUguzVh",
   });
 
   const handleSubmit = (event) => {

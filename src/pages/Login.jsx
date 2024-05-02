@@ -46,6 +46,12 @@ const Login = () => {
         </div>
         <div className="user-info-container">
           <form id="user-info-form" onSubmit={handleSubmit}>
+            <div className="game-download">
+              <a href="https://drive.google.com/drive/folders/1S6aLqEnMBUr_SqsiYefLIhlgd_E-S23Q?usp=sharing">
+                Descargar juego
+              </a>
+              <span class="material-symbols-outlined">arrow_forward</span>
+            </div>
             <div className="user-info-title-container">
               <h1>Inicia Sesión</h1>
             </div>

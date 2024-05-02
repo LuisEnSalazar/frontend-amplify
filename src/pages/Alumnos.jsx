@@ -4,6 +4,7 @@ import axios from "axios";
 import StudentCard from "../components/StudentCard";
 import StudentModal from "../components/StudentModalAdd";
 import { useEffect, useState } from "react";
+const FormData = require("form-data");
 
 const Alumnos = () => {
   const testStudent = {
@@ -23,11 +24,30 @@ const Alumnos = () => {
 
   const studentStack = [];
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    // You can perform additional actions here before submitting the form
-    // For example, sending data to the server or validating the form
+    let data = new FormData();
+    data.append("name", formData.name);
+    data.append("list_num", formData.list_num);
+    data.append("gender", formData.gender);
+    data.append("teacher_id", "LCzCXb8hjAJg89foUguzVh");
     console.log("Form submitted:", formData);
+    let config = {
+      method: "post",
+      maxBodyLength: Infinity,
+      url: "http://18.190.68.50:8000/student/create",
+      data: data,
+    };
+
+    axios
+      .request(config)
+      .then((response) => {
+        console.log(JSON.stringify(response.data));
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
     fetchStudents();
   };
 
