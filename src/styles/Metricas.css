@@ -13,3 +13,10 @@
 #metrica-option {
   margin-right: 40px;
 }
+
+.metrica-title-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}

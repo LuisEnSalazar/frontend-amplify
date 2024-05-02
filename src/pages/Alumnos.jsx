@@ -133,7 +133,9 @@ const Alumnos = () => {
                     value={formData.gender}
                     onChange={handleInputChange}
                   >
-                    <option value="Selecciona">Selecciona</option>
+                    <option value="" disabled selected hidden>
+                      Selecciona
+                    </option>
                     <option value="H">H</option>
                     <option value="F">F</option>
                   </select>
