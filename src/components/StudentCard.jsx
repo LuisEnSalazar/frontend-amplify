@@ -1,12 +1,12 @@
-import Navbar from "../components/Navbar";
-import "../styles/Alumnos.css";
-import axios from "axios";
-import StudentCard from "../components/StudentCard";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import "../styles/StudentCard.css";
+import { useNavigate } from "react-router-dom";
+import { Popover } from "react-tiny-popover";
 
-const Alumnos = () => {
-  const [students, setStudents] = useState([]);
-  const id = "123";
+const StudentCard = ({ id }) => {
+  const navigate = useNavigate();
+
+  const [isPopoverOpen, setIsPopoverOpen] = useState(false);
 
   const [formData, setFormData] = useState({
     student_name: "",
@@ -22,65 +22,51 @@ const Alumnos = () => {
     });
   };
 
-  const studentStack = [];
-
-  const fetchStudents = async () => {
-    await axios
-      .get("http://18.190.68.50:8000/student/get/all")
-      .then((res) => {
-        setStudents(res.data);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  };
-
   const handleSubmit = (event) => {
     event.preventDefault();
     // You can perform additional actions here before submitting the form
     // For example, sending data to the server or validating the form
     console.log("Form submitted:", formData);
-    fetchStudents();
   };
 
-  /*
-  for (let i = 0; i < bots.length; i += 3) {
-    const botsInRow = bots.slice(i, i + 3);
-    const hStack = (
-      <Flex marginTop="20px" w="100%">
-        {botsInRow.map((bot, index) => (
-          <>
-            <Etiqueta nombre={bot.name} status="Active" mostrarTexto={true} />
-            {index === 2 ? <></> : <Spacer />}
-          </>
-        ))}
-        {botsInRow.length === 2 && <Box w="323px" />}
-      </Flex>
-    );
-    hStacks.push(hStack);
-  }*/
+  const handleSee = () => {
+    navigate(`/alumno/${id}`);
+  };
 
-  useEffect(() => {
-    fetchStudents();
-  }, []);
-
+  const handleDelete = () => {};
   return (
-    <div className="alumnos-container">
-      <Navbar />
-      <div className="alumnos-list-container">
-        <button
-          id="alumnos-add"
-          type="button"
-          class="btn btn-primary"
-          data-toggle="modal"
-          data-target="#exampleModalCenter"
+    <div className="student-card-container">
+      <div className="student-card">
+        <span class="material-symbols-outlined">account_circle</span>
+        Luis Enrique Salazar
+        <Popover
+          isOpen={isPopoverOpen}
+          positions={["right"]} // preferred positions by priority
+          content={
+            <div className="popover-menu">
+              <div className="popover-option" onClick={handleSee}>
+                <span class="material-symbols-outlined">visibility</span>
+                Ver
+              </div>
+              <div
+                className="popover-option option-middle"
+                data-toggle="modal"
+                data-target="#exampleModalCenter"
+              >
+                <span class="material-symbols-outlined">edit</span>
+                Editar
+              </div>
+              <div className="popover-option" onClick={handleDelete}>
+                <span class="material-symbols-outlined">delete</span>
+                Borrar
+              </div>
+            </div>
+          }
         >
-          Añadir alumno
-          <span class="material-symbols-outlined add-icon">add</span>
-        </button>
-        <div className="alumnos-list">
-          <StudentCard id={id} />
-        </div>
+          <div onClick={() => setIsPopoverOpen(!isPopoverOpen)}>
+            <span class="material-symbols-outlined">more_vert</span>
+          </div>
+        </Popover>
       </div>
       <div
         class="modal fade"
@@ -152,4 +138,4 @@ const Alumnos = () => {
   );
 };
 
-export default Alumnos;
+export default StudentCard;

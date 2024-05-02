@@ -43,3 +43,7 @@
 a.active {
   color: #91a8c7;
 }
+
+a:hover {
+  text-decoration: none;
+}

@@ -1,0 +1,36 @@
+.student-card-container {
+  background-color: #3a557c;
+  width: 400px;
+  border-radius: 15px;
+  border: none;
+  margin-left: 1%;
+  margin-bottom: 40px;
+}
+
+.student-card {
+  font-size: 20px;
+  color: white;
+  padding: 20px 50px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.popover-menu {
+  background-color: white;
+  padding: 10px;
+  border-style: solid;
+  border-width: 2px;
+}
+
+.popover-option {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.option-middle {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
