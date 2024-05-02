@@ -4,7 +4,6 @@ import axios from "axios";
 import StudentCard from "../components/StudentCard";
 import StudentModal from "../components/StudentModalAdd";
 import { useEffect, useState } from "react";
-const FormData = require("form-data");
 
 const Alumnos = () => {
   const testStudent = {
@@ -48,6 +47,10 @@ const Alumnos = () => {
         console.log(error);
       });
 
+    formData.name = "";
+    formData.list_num = "";
+    formData.gender = "";
+
     fetchStudents();
   };
 
@@ -55,6 +58,7 @@ const Alumnos = () => {
     await axios
       .get("http://18.190.68.50:8000/student/get/all")
       .then((res) => {
+        console.log(res.data);
         setStudents(res.data);
       })
       .catch((err) => {
@@ -67,7 +71,7 @@ const Alumnos = () => {
     const hStack = (
       <div className="student-container">
         {studentsInRow.map((student) => (
-          <StudentCard student={student} />
+          <StudentCard student={student} fetchStudents={fetchStudents} />
         ))}
       </div>
     );
@@ -90,9 +94,7 @@ const Alumnos = () => {
           Añadir alumno
           <span class="material-symbols-outlined add-icon">add</span>
         </div>
-        <div className="alumnos-list">
-          <StudentCard student={testStudent} />
-        </div>
+        <div className="alumnos-list">{studentStack}</div>
       </div>
       <StudentModal
         handleSubmit={handleSubmit}

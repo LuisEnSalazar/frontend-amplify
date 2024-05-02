@@ -52,7 +52,7 @@ const Metricas = () => {
       getTableData("puntajesPorNivel");
     } else if (metricaOptionValue === "Progreso Global Promedio") {
       axios
-        .get("http://localhost.3000/progresoGlobalPromedio")
+        .get("http://18.190.68.50:8000/metric/progresoGlobalPromedio")
         .then((res) => {
           setGeneralPercentage(`${res.data.general}%`);
           setMalePercentage(`${res.data.male}%`);

@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "../styles/Login.css";
 import Escudo from "../images/Escudo.png";
 import axios from "axios";
+const FormData = require("form-data");
 
 const Login = () => {
   const navigate = useNavigate();
@@ -22,16 +23,26 @@ const Login = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    let data = new FormData();
+    data.append("email", formData.email);
+    data.append("password", formData.password);
     console.log("Form submitted:", formData);
-    await axios
-      .post("http://18.190.68.50:8000/teacher/validate", formData)
+    let config = {
+      method: "post",
+      maxBodyLength: Infinity,
+      url: "http://18.190.68.50:8000/teacher/validate",
+      data: data,
+    };
+
+    axios
+      .request(config)
       .then((res) => {
         if (res.data.message === "teacher validated successfully") {
           navigate("/alumnos");
         }
       })
-      .catch((err) => {
-        console.error(err);
+      .catch((error) => {
+        console.log(error);
       });
   };
 

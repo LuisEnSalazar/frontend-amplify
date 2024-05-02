@@ -9,7 +9,7 @@ const StudentModal = ({ handleSubmit, formData, setFormData }) => {
     });
   };
   return (
-    <div class="modal fade" id="studentModalAdd">
+    <div class="modal" id="studentModalAdd">
       <div class="modal-container">
         <div class="modal-content">
           <div class="modal-header">

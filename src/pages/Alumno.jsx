@@ -6,60 +6,84 @@ import axios from "axios";
 import LevelCard from "../components/LevelCard";
 
 const Alumno = () => {
-  var date = new Date(); // Note: JavaScript months are zero-based (0 for January, 1 for February, etc.), so 3 represents April
-
-  // Get the day, month, and year
-  var day = date.getDate();
-  var month = date.getMonth() + 1; // Adding 1 because months are zero-based
-  var year = date.getFullYear();
-
-  // Ensure leading zero for single-digit day and month
-  if (day < 10) {
-    day = "0" + day;
-  }
-  if (month < 10) {
-    month = "0" + month;
-  }
-
-  var formattedDate = day + "/" + month + "/" + year;
-
-  const testLevel = {
-    id: 1,
-    student_id: 1,
-    name: "Nivel 1",
-    attempt: 5,
-    score: 0,
-    finished: false,
-    created_at: formattedDate,
-  };
-
   const { id } = useParams();
-  const [student, setStudent] = useState([]);
+
+  const [student, setStudent] = useState({});
+  const [levels, setLevels] = useState([]);
+
   const playedLevels = [];
   const notPlayedLevels = [];
-  const getStudentInfo = () => {};
-  /*student.levels.map((level) => {
-    if (level.finished) {
-      playedLevels.push(<LevelCard level={level} />);
+
+  const getStudentInfo = () => {
+    let data = new FormData();
+    data.append("id", id);
+    let config = {
+      method: "post",
+      maxBodyLength: Infinity,
+      url: "http://18.190.68.50:8000/student/get/one",
+      data: data,
+    };
+
+    axios
+      .request(config)
+      .then((response) => {
+        setStudent(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const getLevelInfo = () => {
+    let data = new FormData();
+    data.append("student_id", id);
+    let config = {
+      method: "post",
+      maxBodyLength: Infinity,
+      url: "http://18.190.68.50:8000/level/get/all",
+      data: data,
+    };
+
+    axios
+      .request(config)
+      .then((response) => {
+        console.log(response.data);
+        setLevels(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  levels.map((level, index) => {
+    if (!level.finished) {
+      if (level.score > 0) {
+        playedLevels.push(<LevelCard key={index} level={level} />);
+      } else {
+        notPlayedLevels.push(<LevelCard key={index} level={level} />);
+      }
     } else {
-      notPlayedLevels.push(<LevelCard level={level} />);
+      playedLevels.push(<LevelCard key={index} level={level} />);
     }
-  });*/
-  useEffect(() => {}, []);
+  });
+
+  useEffect(() => {
+    getStudentInfo();
+    getLevelInfo();
+  }, []);
   return (
     <div className="alumno-container">
       <Navbar />
       <div className="alumno-info-container">
-        <h1>Luis Enrique Salazar</h1>
+        <h1>{student.name}</h1>
         <div className="alumno-game-info-container">
-          <p>Número de lista: 17</p>
-          <p>Género: H</p>
-          <p>Puntaje total: 100pts</p>
-          <p>Tiempo de juego: 16hrs</p>
+          <p>Número de lista: {student.list_num}</p>
+          <p>Género: {student.gender}</p>
+          <p>Puntaje total: {student.total_score}pts</p>
+          <p>Tiempo de juego: {student.total_time}min</p>
         </div>
         <h2>Niveles jugados:</h2>
-        {/*playedLevels*/}
-        <LevelCard level={testLevel} />
+        {playedLevels}
         <h2>Niveles no jugados:</h2>
         {notPlayedLevels}
       </div>

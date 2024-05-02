@@ -1,6 +1,20 @@
 import "../styles/LevelCard.css";
 
 const LevelCard = ({ level }) => {
+  const date = new Date(level.created_at);
+
+  let day = date.getDate();
+  let month = date.getMonth() + 1;
+  let year = date.getFullYear();
+
+  if (day < 10) {
+    day = "0" + day;
+  }
+  if (month < 10) {
+    month = "0" + month;
+  }
+
+  const formattedDate = day + "/" + month + "/" + year;
   return (
     <div
       className="level-card-container"
@@ -14,7 +28,7 @@ const LevelCard = ({ level }) => {
     >
       <div class="level-top-info-container">
         <div class="level-name">{level.name}:</div>
-        <div class="level-created-at">Inicio de nivel: {level.created_at}</div>
+        <div class="level-created-at">Inicio de nivel: {formattedDate}</div>
       </div>
       <div class="level-bottom-info-container">
         <p class="max-score">Puntaje máximo: {level.score}</p>

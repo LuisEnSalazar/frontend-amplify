@@ -1,13 +1,11 @@
 import "../styles/StudentModal.css";
 
-const StudentModal = ({ handleSubmit, formData, setFormData }) => {
+const StudentModal = ({ name }) => {
+  console.log(name);
   const handleInputChange = (event) => {
     const { name, value } = event.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
   };
+  const handleSubmit = () => {};
   return (
     <div class="modal fade" id="studentModalEdit">
       <div class="modal-container">
@@ -36,7 +34,7 @@ const StudentModal = ({ handleSubmit, formData, setFormData }) => {
                   className="modal-text-input"
                   id="name"
                   name="name"
-                  value={formData.name}
+                  value={name}
                   onChange={handleInputChange}
                 />
                 <p>Número de lista:</p>
@@ -45,7 +43,7 @@ const StudentModal = ({ handleSubmit, formData, setFormData }) => {
                   className="modal-text-input"
                   id="list_num"
                   name="list_num"
-                  value={formData.list_num}
+                  value={"hello"}
                   onChange={handleInputChange}
                 />
                 <p>Género:</p>
@@ -53,7 +51,7 @@ const StudentModal = ({ handleSubmit, formData, setFormData }) => {
                   id="gender"
                   className="modal-select"
                   name="gender"
-                  value={formData.gender}
+                  value={"hello"}
                   onChange={handleInputChange}
                 >
                   <option value="" disabled selected hidden>
