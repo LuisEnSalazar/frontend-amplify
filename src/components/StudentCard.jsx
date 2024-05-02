@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "../styles/StudentCard.css";
 import { useNavigate } from "react-router-dom";
 import { Popover } from "react-tiny-popover";
-import StudentModal from "./StudentModal";
+import StudentModal from "./StudentModalEdit";
 import axios from "axios";
 
 const StudentCard = ({ student }) => {
@@ -11,8 +11,8 @@ const StudentCard = ({ student }) => {
   const [isPopoverOpen, setIsPopoverOpen] = useState(false);
 
   const [formData, setFormData] = useState({
-    student_name: student.name,
-    num_list: student.num_list,
+    name: student.name,
+    list_num: student.list_num,
     gender: student.gender,
   });
 
@@ -29,11 +29,16 @@ const StudentCard = ({ student }) => {
   return (
     <div className="student-card-container">
       <div className="student-card">
-        <span class="material-symbols-outlined">account_circle</span>
-        Luis Enrique Salazar
+        <div className="student-card-logo">
+          <span class="material-symbols-outlined student-logo-icon">
+            account_circle
+          </span>
+        </div>
+        <div className="student-name">Luis Enrique Salazar</div>
         <Popover
           isOpen={isPopoverOpen}
           positions={["right"]}
+          onClickOutside={() => setIsPopoverOpen(false)}
           content={
             <div className="popover-menu">
               <div className="popover-option" onClick={handleSee}>
@@ -43,7 +48,7 @@ const StudentCard = ({ student }) => {
               <div
                 className="popover-option option-middle"
                 data-toggle="modal"
-                data-target="#exampleModalCenter"
+                data-target="#studentModalEdit"
               >
                 <span class="material-symbols-outlined">edit</span>
                 Editar
@@ -55,7 +60,10 @@ const StudentCard = ({ student }) => {
             </div>
           }
         >
-          <div onClick={() => setIsPopoverOpen(!isPopoverOpen)}>
+          <div
+            className={"student-card-options"}
+            onClick={() => setIsPopoverOpen(!isPopoverOpen)}
+          >
             <span class="material-symbols-outlined options-menu">
               more_vert
             </span>

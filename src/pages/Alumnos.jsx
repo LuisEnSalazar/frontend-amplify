@@ -2,15 +2,22 @@ import Navbar from "../components/Navbar";
 import "../styles/Alumnos.css";
 import axios from "axios";
 import StudentCard from "../components/StudentCard";
-import StudentModal from "../components/StudentModal";
+import StudentModal from "../components/StudentModalAdd";
 import { useEffect, useState } from "react";
 
 const Alumnos = () => {
+  const testStudent = {
+    id: "12",
+    list_num: 1,
+    name: "Luis Enrique Salazar",
+    gender: "H",
+  };
+
   const [students, setStudents] = useState([]);
 
   const [formData, setFormData] = useState({
-    student_name: "",
-    num_list: "",
+    name: "",
+    list_num: "",
     gender: "",
   });
 
@@ -55,11 +62,17 @@ const Alumnos = () => {
     <div className="alumnos-container">
       <Navbar />
       <div className="alumnos-list-container">
-        <div id="alumnos-add" data-toggle="modal" data-target="#studentModal">
+        <div
+          id="alumnos-add"
+          data-toggle="modal"
+          data-target="#studentModalAdd"
+        >
           Añadir alumno
           <span class="material-symbols-outlined add-icon">add</span>
         </div>
-        <div className="alumnos-list">{studentStack}</div>
+        <div className="alumnos-list">
+          <StudentCard student={testStudent} />
+        </div>
       </div>
       <StudentModal
         handleSubmit={handleSubmit}

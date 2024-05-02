@@ -9,7 +9,7 @@ const StudentModal = ({ handleSubmit, formData, setFormData }) => {
     });
   };
   return (
-    <div class="modal fade" id="studentModal">
+    <div class="modal fade" id="studentModalAdd">
       <div class="modal-container">
         <div class="modal-content">
           <div class="modal-header">
@@ -34,18 +34,18 @@ const StudentModal = ({ handleSubmit, formData, setFormData }) => {
                 <input
                   type="text"
                   className="modal-text-input"
-                  id="student_name"
-                  name="student_name"
-                  value={formData.student_name}
+                  id="name"
+                  name="name"
+                  value={formData.name}
                   onChange={handleInputChange}
                 />
                 <p>Número de lista:</p>
                 <input
                   type="text"
                   className="modal-text-input"
-                  id="num_list"
-                  name="num_list"
-                  value={formData.num_list}
+                  id="list_num"
+                  name="list_num"
+                  value={formData.list_num}
                   onChange={handleInputChange}
                 />
                 <p>Género:</p>

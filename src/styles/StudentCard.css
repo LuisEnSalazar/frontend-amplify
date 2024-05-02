@@ -9,11 +9,10 @@
 .student-card {
   font-size: 20px;
   color: white;
-  padding: 20px 50px;
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  height: 80px;
 }
 
 .popover-menu {
@@ -34,5 +33,22 @@
 }
 
 .options-menu {
+  font-size: 35px;
   cursor: pointer;
+}
+
+.student-card-logo,
+.student-card-options {
+  width: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.student-logo-icon {
+  font-size: 45px;
+}
+
+.student-name {
+  width: 60%;
 }
